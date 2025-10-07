@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMAT-Tech | Unit Produksi Sekolah</title>
+    <style>
+        /* ====== Gaya Umum ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            /* Latar Belakang Biru Kehitaman (Navy Gelap) */
+            font-family: "Poppins", "Segoe UI", sans-serif;
+            background-color: #0A192F; 
+            color: #C3D2E5; /* Warna teks terang */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Warna Judul dan Header Utama menjadi Hijau Menyala */
+        h1, h2, h3 {
+            color: #00FF00; 
+        }
+
+        /* ====== Navbar ====== */
+        header {
+            background-color: #041120; /* Lebih Gelap dari body, hampir hitam */
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+        }
+
+        header h1 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        nav a:hover {
+            color: #00FF00; /* Hijau Menyala */
+            text-shadow: 0 0 5px #00FF00; /* Efek glow ringan */
+        }
+
+        /* ====== Hero Section ====== */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1581091870627-3b5b1b88e36d?auto=format&fit=crop&w=1950&q=80') center/cover;
+            height: 90vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+            color: #00FF00; /* Hijau Menyala */
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7); /* Efek glow kuat */
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin-bottom: 25px;
+        }
+
+        .hero .btn {
+            background-color: #00FF00; /* Hijau Menyala */
+            color: #041120; /* Teks sangat gelap pada tombol terang */
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin: 5px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Shadow glow */
+        }
+
+        .hero .btn:hover {
+            background-color: #00CC00; /* Hijau sedikit lebih gelap saat hover */
+            box-shadow: 0 0 20px rgba(0, 255, 0, 1);
+        }
+
+        /* ====== Section ====== */
+        section {
+            padding: 70px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #00FF00; /* Hijau Menyala */
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+
+        /* ====== Layanan ====== */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: #1C2E4A; /* Background kartu lebih gelap */
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, border 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border: 1px solid #00FF00; /* Garis glow saat hover */
+        }
+
+        .service-card h3 {
+            color: #fff; /* Judul kartu putih */
+        }
+        
+        .service-card p {
+            color: #C3D2E5; /* Teks deskripsi lebih terang */
+        }
+
+        .service-card i {
+            font-size: 45px;
+            color: #00FF00; /* Ikon Hijau Menyala */
+            text-shadow: 0 0 8px #00FF00; /* Glow ikon */
+            margin-bottom: 15px;
+        }
+
+        /* ====== Portofolio ====== */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            background-color: #1C2E4A; /* Background item portofolio gelap */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .portfolio-item p {
+            color: #C3D2E5; 
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .portfolio-item p {
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* ====== Galeri (NEW) ====== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Glow pada gambar saat hover */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* ====== Tentang Kami ====== */
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 15px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p strong {
+            color: #00FF00; /* Memberi glow pada teks penting */
+        }
+
+        /* ====== Kontak ====== */
+        .contact form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact input, .contact textarea {
+            padding: 12px;
+            border: 1px solid #444; /* Border sedikit terang */
+            border-radius: 8px;
+            font-size: 15px;
+            width: 100%;
+            background-color: #0A192F; /* Latar belakang input sama dengan body */
+            color: #C3D2E5;
+        }
+
+        .contact button {
+            background-color: #00FF00; /* Hijau Menyala */
+            color: #041120;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .contact button:hover {
+            background-color: #00CC00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .contact-info p {
+            color: #00FF00; /* Teks info kontak juga glow */
+        }
+
+        /* ====== Footer ====== */
+        footer {
+            background-color: #041120;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: #00FF00; /* Glow di footer */
+        }
+
+        /* ====== Responsif ====== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== Navbar ====== -->
+    <header>
+        <h1>SMAT-<span style="color: #00FF00;">Tech</span></h1>
+        <nav>
+            <ul>
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#layanan">Layanan</a></li>
+                <li><a href="#portofolio">Portofolio</a></li>
+                <li><a href="#galeri">Galeri</a></li> <!-- Link Galeri Ditambahkan -->
+                <li><a href="#tentang">Tentang Kami</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ====== Hero Section ====== -->
+    <section class="hero" id="beranda">
+        <h2>Solusi Teknis Inovatif dari Siswa untuk Dunia Industri</h2>
+        <p>Kami adalah Unit Produksi SMAT-Tech yang menyediakan layanan teknis profesional seperti instalasi jaringan, servis komputer, pembuatan website, dan desain grafis.</p>
+        <div>
+            <a href="#layanan" class="btn">Lihat Layanan</a>
+            <a href="#kontak" class="btn">Hubungi Kami</a>
+        </div>
+    </section>
+
+    <!-- ====== Layanan ====== -->
+    <section id="layanan">
+        <h2 class="section-title">Layanan Kami</h2>
+        <div class="services">
+            <div class="service-card">
+                <i>💻</i>
+                <h3>Servis Komputer</h3>
+                <p>Perawatan, perbaikan, dan peningkatan performa perangkat komputer sekolah atau kantor.</p>
+            </div>
+            <div class="service-card">
+                <i>🌐</i>
+                <h3>Instalasi Jaringan</h3>
+                <p>Desain dan pemasangan jaringan LAN/WiFi untuk kebutuhan sekolah dan bisnis.</p>
+            </div>
+            <div class="service-card">
+                <i>🖥️</i>
+                <h3>Pembuatan Website</h3>
+                <p>Website profil, sekolah, hingga toko online yang menarik dan responsif.</p>
+            </div>
+            <div class="service-card">
+                <i>🎨</i>
+                <h3>Desain Grafis</h3>
+                <p>Pembuatan logo, banner, dan media promosi digital dengan sentuhan profesional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== Portofolio ====== -->
+    <section id="portofolio">
+        <h2 class="section-title">Portofolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="Foto11.jpg" alt="Proyek 1">
+                <p>Instalasi jaringan di lab komputer sekolah.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="Foto12.jpg" alt="Proyek 2">
+                <p>Pembuatan website profil sekolah.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="Foto13.jpg" alt="Proyek 3">
+                <p>Servis dan maintenance perangkat komputer kantor.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======
+        </div>
+    </section>
+
+    <!-- ====== Tentang Kami ====== -->
+    <section id="tentang">
+        <h2 class="section-title">Tentang Kami</h2>
+        <div class="about">
+            <img src="https://source.unsplash.com/600x400/?team,students" alt="Tim SMAT-Tech">
+            <div class="about-text">
+                <p><strong>SMART-Tech Unit Produksi Sekolah</strong> adalah wadah bagi siswa SMK untuk mengembangkan kemampuan teknis di bidang teknologi informasi dan komunikasi. Kami berkomitmen memberikan pelayanan terbaik dengan mengedepankan profesionalisme, kreativitas, dan semangat belajar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== Kontak ====== -->
+    <section id="kontak" class="contact">
+        <h2 class="section-title">Hubungi Kami</h2>
+        <form id="contactForm">
+            <input type="text" id="nama" placeholder="Nama Anda" required>
+            <input type="email" id="email" placeholder="Email Anda" required>
+            <textarea id="pesan" rows="4" placeholder="Tulis pesan Anda..." required></textarea>
+            <button type="submit">Kirim Pesan</button>
+        </form>
+        <div class="contact-info">
+            <p>📍 Alamat: Jl.Wonoprojo No.19 Pacar Tirto Kab. Pekalongan </p>
+            <p>📧 Email: smattech@school.id</p>
+            <p>📱 Instagram: @smattech.official</p>
+        </div>
+    </section>
+
+    <!-- ====== Footer ====== -->
+    <footer>
+        <p>&copy; 2025 SMART-Tech Unit Produksi Sekolah | Dibuat oleh Tim Siswa TKJ</p>
+    </footer>
+
+    <script>
+        // Mengganti penggunaan alert() dengan fungsi yang lebih aman (seperti mencetak ke konsol)
+        function showNotification(message) {
+            console.log("Pesan Notifikasi:", message);
+            // Di lingkungan nyata, ini akan menampilkan modal atau toast custom.
+        }
+
+        // ====== Efek Scroll Animasi ======
+        // Menambahkan '.gallery-item' agar galeri juga ikut beranimasi saat discroll.
+        const elements = document.querySelectorAll('.service-card, .portfolio-item, .gallery-item, .about, .contact form');
+        const showOnScroll = () => {
+            const triggerBottom = window.innerHeight * 0.85;
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                // Mengatur properti CSS yang sudah didefinisikan di gaya inline agar animasi bekerja saat discroll
+                if (rect.top < triggerBottom) {
+                    el.style.transition = 'all 0.6s ease';
+                    el.style.transform = 'translateY(0)';
+                    el.style.opacity = 1;
+                } else {
+                    el.style.transform = 'translateY(40px)';
+                    el.style.opacity = 0;
+                }
+            });
+        };
+        
+        // Inisialisasi properti awal untuk animasi scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            elements.forEach(el => {
+                el.style.transition = 'none'; // Matikan transisi saat inisialisasi
+                el.style.transform = 'translateY(40px)';
+                el.style.opacity = 0;
+            });
+            showOnScroll();
+        });
+
+        window.addEventListener('scroll', showOnScroll);
+
+        // ====== Validasi Formulir Kontak ======
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Menggunakan fungsi custom notifikasi/log
+            showNotification('Terima kasih, pesan Anda telah terkirim!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
