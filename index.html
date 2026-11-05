@@ -1,474 +1,582 @@
+```html
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMAT-Tech | Unit Produksi Sekolah</title>
+    <title>Portofolio Interactive & Motion</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ====== Gaya Umum ====== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
         body {
-            /* Latar Belakang Biru Kehitaman (Navy Gelap) */
-            font-family: "Poppins", "Segoe UI", sans-serif;
-            background-color: #0A192F; 
-            color: #C3D2E5; /* Warna teks terang */
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.4);
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(156, 163, 175, 0.7);
         }
 
-        /* Warna Judul dan Header Utama menjadi Hijau Menyala */
-        h1, h2, h3 {
-            color: #00FF00; 
+        /* Reveal on scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* ====== Navbar ====== */
-        header {
-            background-color: #041120; /* Lebih Gelap dari body, hampir hitam */
-            color: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 40px;
+        /* Card 3D tilt effect base */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transition: transform 0.15s cubic-bezier(0.2, 0, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
         }
 
-        header h1 {
-            font-size: 22px;
-            font-weight: 600;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav a {
-            color: #fff;
-            font-weight: 500;
-            transition: color 0.3s, text-shadow 0.3s;
-        }
-
-        nav a:hover {
-            color: #00FF00; /* Hijau Menyala */
-            text-shadow: 0 0 5px #00FF00; /* Efek glow ringan */
-        }
-
-        /* ====== Hero Section ====== */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                        url('https://images.unsplash.com/photo-1581091870627-3b5b1b88e36d?auto=format&fit=crop&w=1950&q=80') center/cover;
-            height: 90vh;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero h2 {
-            font-size: 38px;
-            margin-bottom: 15px;
-            color: #00FF00; /* Hijau Menyala */
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7); /* Efek glow kuat */
-        }
-
-        .hero p {
-            font-size: 18px;
-            max-width: 700px;
-            margin-bottom: 25px;
-        }
-
-        .hero .btn {
-            background-color: #00FF00; /* Hijau Menyala */
-            color: #041120; /* Teks sangat gelap pada tombol terang */
-            padding: 12px 28px;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: 0.3s;
-            margin: 5px;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Shadow glow */
-        }
-
-        .hero .btn:hover {
-            background-color: #00CC00; /* Hijau sedikit lebih gelap saat hover */
-            box-shadow: 0 0 20px rgba(0, 255, 0, 1);
-        }
-
-        /* ====== Section ====== */
-        section {
-            padding: 70px 10%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 40px;
-            color: #00FF00; /* Hijau Menyala */
-            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
-        }
-
-        /* ====== Layanan ====== */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .service-card {
-            background-color: #1C2E4A; /* Background kartu lebih gelap */
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.3s, border 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            border: 1px solid #00FF00; /* Garis glow saat hover */
-        }
-
-        .service-card h3 {
-            color: #fff; /* Judul kartu putih */
-        }
-        
-        .service-card p {
-            color: #C3D2E5; /* Teks deskripsi lebih terang */
-        }
-
-        .service-card i {
-            font-size: 45px;
-            color: #00FF00; /* Ikon Hijau Menyala */
-            text-shadow: 0 0 8px #00FF00; /* Glow ikon */
-            margin-bottom: 15px;
-        }
-
-        /* ====== Portofolio ====== */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .portfolio-item {
-            background-color: #1C2E4A; /* Background item portofolio gelap */
-            border-radius: 12px;
+        /* Glowing cursor highlight for cards */
+        .glow-card {
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
         }
-
-        .portfolio-item:hover {
-            transform: scale(1.03);
+        .glow-card::before {
+            content: '';
+            position: absolute;
+            top: var(--y, 0px);
+            left: var(--x, 0px);
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-        
-        .portfolio-item p {
-            color: #C3D2E5; 
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .portfolio-item p {
-            padding: 15px;
-            text-align: center;
-        }
-
-        /* ====== Galeri (NEW) ====== */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-        }
-
-        .gallery-item {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Glow pada gambar saat hover */
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            display: block;
-        }
-        
-        /* ====== Tentang Kami ====== */
-        .about {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .about img {
-            width: 100%;
-            max-width: 450px;
-            border-radius: 15px;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text p strong {
-            color: #00FF00; /* Memberi glow pada teks penting */
-        }
-
-        /* ====== Kontak ====== */
-        .contact form {
-            max-width: 500px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .contact input, .contact textarea {
-            padding: 12px;
-            border: 1px solid #444; /* Border sedikit terang */
-            border-radius: 8px;
-            font-size: 15px;
-            width: 100%;
-            background-color: #0A192F; /* Latar belakang input sama dengan body */
-            color: #C3D2E5;
-        }
-
-        .contact button {
-            background-color: #00FF00; /* Hijau Menyala */
-            color: #041120;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: 600;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-        }
-
-        .contact button:hover {
-            background-color: #00CC00;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
-        }
-
-        .contact-info {
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        .contact-info p {
-            color: #00FF00; /* Teks info kontak juga glow */
-        }
-
-        /* ====== Footer ====== */
-        footer {
-            background-color: #041120;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        footer a {
-            color: #00FF00; /* Glow di footer */
-        }
-
-        /* ====== Responsif ====== */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .hero h2 {
-                font-size: 30px;
-            }
+        .glow-card:hover::before {
+            opacity: 1;
         }
     </style>
 </head>
-<body>
+<body class="bg-neutral-50 text-neutral-800 dark:bg-neutral-950 dark:text-neutral-200 min-h-screen flex flex-col justify-between selection:bg-neutral-200 dark:selection:bg-neutral-800 relative overflow-x-hidden">
 
-    <!-- ====== Navbar ====== -->
-    <header>
-        <h1>SMAT-<span style="color: #00FF00;">Tech</span></h1>
-        <nav>
-            <ul>
-                <li><a href="#beranda">Beranda</a></li>
-                <li><a href="#layanan">Layanan</a></li>
-                <li><a href="#portofolio">Portofolio</a></li>
-                <li><a href="#galeri">Galeri</a></li> <!-- Link Galeri Ditambahkan -->
-                <li><a href="#tentang">Tentang Kami</a></li>
-                <li><a href="#kontak">Kontak</a></li>
-            </ul>
-        </nav>
+    <!-- Interactive Background Canvas -->
+    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40 dark:opacity-20"></canvas>
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-neutral-50/70 dark:bg-neutral-950/70 backdrop-blur-md border-b border-neutral-200/50 dark:border-neutral-800/50 transition-colors">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#hero" class="text-lg font-bold tracking-tight hover:scale-105 transition-transform duration-200">
+                alex<span class="text-sky-500 font-extrabold">.</span>motion
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-sky-500 transition-colors">Tentang</a>
+                <a href="#projects" class="hover:text-sky-500 transition-colors">Proyek</a>
+                <a href="#skills" class="hover:text-sky-500 transition-colors">Keahlian</a>
+                <a href="#contact" class="hover:text-sky-500 transition-colors">Kontak</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-full hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 transition-colors transform hover:rotate-12 duration-300">
+                    <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-toggle" aria-label="Toggle Menu" class="md:hidden p-2 rounded-full hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 transition-colors">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 px-6 py-4 space-y-3 text-sm">
+            <a href="#about" class="block py-1 hover:text-sky-500 transition-colors">Tentang</a>
+            <a href="#projects" class="block py-1 hover:text-sky-500 transition-colors">Proyek</a>
+            <a href="#skills" class="block py-1 hover:text-sky-500 transition-colors">Keahlian</a>
+            <a href="#contact" class="block py-1 hover:text-sky-500 transition-colors">Kontak</a>
+        </div>
     </header>
 
-    <!-- ====== Hero Section ====== -->
-    <section class="hero" id="beranda">
-        <h2>Solusi Teknis Inovatif dari Siswa untuk Dunia Industri</h2>
-        <p>Kami adalah Unit Produksi SMAT-Tech yang menyediakan layanan teknis profesional seperti instalasi jaringan, servis komputer, pembuatan website, dan desain grafis.</p>
-        <div>
-            <a href="#layanan" class="btn">Lihat Layanan</a>
-            <a href="#kontak" class="btn">Hubungi Kami</a>
-        </div>
-    </section>
+    <!-- Main Content Area -->
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20 w-full space-y-32 z-10 relative">
 
-    <!-- ====== Layanan ====== -->
-    <section id="layanan">
-        <h2 class="section-title">Layanan Kami</h2>
-        <div class="services">
-            <div class="service-card">
-                <i>💻</i>
-                <h3>Servis Komputer</h3>
-                <p>Perawatan, perbaikan, dan peningkatan performa perangkat komputer sekolah atau kantor.</p>
+        <!-- Hero Section -->
+        <section id="hero" class="pt-8 space-y-6 reveal">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-medium bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+                <span class="w-2 h-2 rounded-full bg-sky-500 animate-ping"></span>
+                <span>Spesialis Interaksi &amp; Animasi Web</span>
             </div>
-            <div class="service-card">
-                <i>🌐</i>
-                <h3>Instalasi Jaringan</h3>
-                <p>Desain dan pemasangan jaringan LAN/WiFi untuk kebutuhan sekolah dan bisnis.</p>
+            
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 leading-tight">
+                Menciptakan Pengalaman Web Yang <span id="typed-text" class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-500 border-b-2 border-sky-500"></span>
+            </h1>
+            
+            <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed font-light">
+                Halo, saya Alex. Berfokus menyatukan kode, mikro-interaksi halus, dan desain UI/UX yang fungsional untuk membawa situs web menjadi lebih hidup.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+                <a href="#projects" class="group px-6 py-3 bg-neutral-900 text-neutral-50 dark:bg-neutral-100 dark:text-neutral-900 rounded-xl font-medium text-sm flex items-center space-x-2 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5">
+                    <span>Jelajahi Karya</span>
+                    <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
+                </a>
+                <a href="#contact" class="px-6 py-3 border border-neutral-300 dark:border-neutral-700 rounded-xl font-medium text-sm hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-all duration-300 hover:-translate-y-0.5">
+                    Hubungi Saya
+                </a>
             </div>
-            <div class="service-card">
-                <i>🖥️</i>
-                <h3>Pembuatan Website</h3>
-                <p>Website profil, sekolah, hingga toko online yang menarik dan responsif.</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="space-y-6 scroll-mt-24 reveal">
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-sky-500">Tentang Saya</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="md:col-span-2 space-y-4 text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                    <p>
+                        Pengalaman saya menggabungkan dasar-dasar rekayasa perangkat lunak dengan animasi interaktif. Saya percaya motion design yang baik meningkatkan fungsionalitas tanpa mengganggu kenyamanan pengguna.
+                    </p>
+                    <p>
+                        Fokus utama saya adalah performa animasi yang mulus (60 FPS), antarmuka responsif, dan prinsip aksesisibilitas yang kuat.
+                    </p>
+                </div>
+                <div class="space-y-4 border-l-2 border-sky-500/30 pl-6">
+                    <div>
+                        <h3 class="text-xs text-neutral-400 uppercase tracking-wider">Pengalaman</h3>
+                        <p class="text-base font-semibold mt-1">4+ Tahun</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xs text-neutral-400 uppercase tracking-wider">Spesialisasi</h3>
+                        <p class="text-base font-semibold mt-1">Creative Frontend, Motion UI, WebGL</p>
+                    </div>
+                </div>
             </div>
-            <div class="service-card">
-                <i>🎨</i>
-                <h3>Desain Grafis</h3>
-                <p>Pembuatan logo, banner, dan media promosi digital dengan sentuhan profesional.</p>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="space-y-8 scroll-mt-24 reveal">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-sky-500">Proyek Interaktif Pilihan</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Project Card 1 -->
+                <div class="tilt-card glow-card group border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-sky-500/50 dark:hover:border-sky-500/50 transition-all duration-300 bg-neutral-100/40 dark:bg-neutral-900/40 backdrop-blur-sm flex flex-col justify-between hover:shadow-xl">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs text-neutral-400 font-mono">2026</span>
+                            <a href="#" aria-label="Lihat Proyek" class="p-2 rounded-full bg-neutral-200/50 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-300 hover:text-sky-500 hover:scale-110 transition-all">
+                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-sky-500 transition-colors">3D Product Configurator</h3>
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                            Simulasi visualisasi produk 3D interaktif berbasis WebGL/Three.js dengan animasi rotasi dan pemilihan material real-time.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">Three.js</span>
+                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">React</span>
+                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">GSAP</span>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="tilt-card glow-card group border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-sky-500/50 dark:hover:border-sky-500/50 transition-all duration-300 bg-neutral-100/40 dark:bg-neutral-900/40 backdrop-blur-sm flex flex-col justify-between hover:shadow-xl">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs text-neutral-400 font-mono">2025</span>
+                            <a href="#" aria-label="Lihat Proyek" class="p-2 rounded-full bg-neutral-200/50 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-300 hover:text-sky-500 hover:scale-110 transition-all">
+                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-sky-500 transition-colors">Kinetic Typography Engine</h3>
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                            Eksperimentasi gerak tipografi responsif terhadap gerakan kursor pengguna dan ritme audio.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">Canvas API</span>
+                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">TypeScript</span>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="tilt-card glow-card group border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-sky-500/50 dark:hover:border-sky-500/50 transition-all duration-300 bg-neutral-100/40 dark:bg-neutral-900/40 backdrop-blur-sm flex flex-col justify-between hover:shadow-xl">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs text-neutral-400 font-mono">2025</span>
+                            <a href="#" aria-label="Lihat Proyek" class="p-2 rounded-full bg-neutral-200/50 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-300 hover:text-sky-500 hover:scale-110 transition-all">
+                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-sky-500 transition-colors">Minimal Analytics Dashboard</h3>
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                            Dashboard keuangan interaktif dengan statistik real-time, grafik SVG dinamis, dan navigasi gesture.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">Next.js</span>
+                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">Tailwind CSS</span>
+                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">Framer Motion</span>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="tilt-card glow-card group border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-sky-500/50 dark:hover:border-sky-500/50 transition-all duration-300 bg-neutral-100/40 dark:bg-neutral-900/40 backdrop-blur-sm flex flex-col justify-between hover:shadow-xl">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs text-neutral-400 font-mono">2024</span>
+                            <a href="#" aria-label="Lihat Proyek" class="p-2 rounded-full bg-neutral-200/50 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-300 hover:text-sky-500 hover:scale-110 transition-all">
+                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-sky-500 transition-colors">Micro-Interaction Library</h3>
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                            Kumpulan komponen UI ringan dengan fokus animasi tombol, feedback status, dan efek hover kreatif.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">CSS Animation</span>
+                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">Web Components</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="space-y-6 scroll-mt-24 reveal">
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-sky-500">Keahlian &amp; Tools</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm">
+                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
+                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">Three.js / WebGL</span>
+                    <span class="text-xs text-neutral-500 mt-1 block">3D Graphics & Canvas</span>
+                </div>
+                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
+                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">GSAP / Framer Motion</span>
+                    <span class="text-xs text-neutral-500 mt-1 block">Timeline & Physics Motion</span>
+                </div>
+                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
+                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">React / Next.js</span>
+                    <span class="text-xs text-neutral-500 mt-1 block">Interactive Web Apps</span>
+                </div>
+                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
+                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">Tailwind CSS</span>
+                    <span class="text-xs text-neutral-500 mt-1 block">Modern Layouts & Effects</span>
+                </div>
+                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
+                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">JavaScript / TS</span>
+                    <span class="text-xs text-neutral-500 mt-1 block">Core Logic & Math</span>
+                </div>
+                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
+                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">Figma Motion</span>
+                    <span class="text-xs text-neutral-500 mt-1 block">Prototyping & Micro-UI</span>
+                </div>
+                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
+                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">SVG Animation</span>
+                    <span class="text-xs text-neutral-500 mt-1 block">Vector Morphing & Pathing</span>
+                </div>
+                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
+                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">Performance Optimization</span>
+                    <span class="text-xs text-neutral-500 mt-1 block">60FPS Canvas & CSS rendering</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="space-y-6 scroll-mt-24 reveal">
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-sky-500">Kontak</h2>
+            <div class="space-y-4">
+                <h3 class="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+                    Mempunyai ide ide besar?
+                </h3>
+                <p class="text-neutral-600 dark:text-neutral-400 max-w-lg leading-relaxed">
+                    Mari buat proyek Anda menjadi lebih interaktif dan berkesan. Kirimkan pesan singkat melalui email.
+                </p>
+                <div class="pt-2">
+                    <a href="mailto:alex@example.com" class="inline-flex items-center space-x-3 text-xl font-medium text-sky-500 hover:text-sky-600 group">
+                        <span class="border-b-2 border-sky-500 group-hover:border-transparent transition-all">alex@example.com</span>
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-neutral-200 dark:border-neutral-800 py-8 text-xs text-neutral-500 z-10 relative">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 Alex. All Rights Reserved.</p>
+            <div class="flex items-center space-x-6">
+                <a href="#" class="hover:text-sky-500 transition-colors">GitHub</a>
+                <a href="#" class="hover:text-sky-500 transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-sky-500 transition-colors">Twitter</a>
             </div>
         </div>
-    </section>
-
-    <!-- ====== Portofolio ====== -->
-    <section id="portofolio">
-        <h2 class="section-title">Portofolio</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="Foto11.jpg" alt="Proyek 1">
-                <p>Instalasi jaringan di lab komputer sekolah.</p>
-            </div>
-            <div class="portfolio-item">
-                <img src="Foto12.jpg" alt="Proyek 2">
-                <p>Pembuatan website profil sekolah.</p>
-            </div>
-            <div class="portfolio-item">
-                <img src="Foto13.jpg" alt="Proyek 3">
-                <p>Servis dan maintenance perangkat komputer kantor.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======
-        </div>
-    </section>
-
-    <!-- ====== Tentang Kami ====== -->
-    <section id="tentang">
-        <h2 class="section-title">Tentang Kami</h2>
-        <div class="about">
-            <img src="https://source.unsplash.com/600x400/?team,students" alt="Tim SMAT-Tech">
-            <div class="about-text">
-                <p><strong>SMART-Tech Unit Produksi Sekolah</strong> adalah wadah bagi siswa SMK untuk mengembangkan kemampuan teknis di bidang teknologi informasi dan komunikasi. Kami berkomitmen memberikan pelayanan terbaik dengan mengedepankan profesionalisme, kreativitas, dan semangat belajar.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== Kontak ====== -->
-    <section id="kontak" class="contact">
-        <h2 class="section-title">Hubungi Kami</h2>
-        <form id="contactForm">
-            <input type="text" id="nama" placeholder="Nama Anda" required>
-            <input type="email" id="email" placeholder="Email Anda" required>
-            <textarea id="pesan" rows="4" placeholder="Tulis pesan Anda..." required></textarea>
-            <button type="submit">Kirim Pesan</button>
-        </form>
-        <div class="contact-info">
-            <p>📍 Alamat: Jl.Wonoprojo No.19 Pacar Tirto Kab. Pekalongan </p>
-            <p>📧 Email: smattech@school.id</p>
-            <p>📱 Instagram: @smattech.official</p>
-        </div>
-    </section>
-
-    <!-- ====== Footer ====== -->
-    <footer>
-        <p>&copy; 2025 SMART-Tech Unit Produksi Sekolah | Dibuat oleh Tim Siswa TKJ</p>
     </footer>
 
+    <!-- JavaScript Logic & Motion Controls -->
     <script>
-        // Mengganti penggunaan alert() dengan fungsi yang lebih aman (seperti mencetak ke konsol)
-        function showNotification(message) {
-            console.log("Pesan Notifikasi:", message);
-            // Di lingkungan nyata, ini akan menampilkan modal atau toast custom.
+        // Render Lucide Icons
+        lucide.createIcons();
+
+        // ----------------------------------------------------
+        // 1. Theme Toggle Logic
+        // ----------------------------------------------------
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
 
-        // ====== Efek Scroll Animasi ======
-        // Menambahkan '.gallery-item' agar galeri juga ikut beranimasi saat discroll.
-        const elements = document.querySelectorAll('.service-card, .portfolio-item, .gallery-item, .about, .contact form');
-        const showOnScroll = () => {
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggleBtn = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggleBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // ----------------------------------------------------
+        // 2. Typing Text Effect
+        // ----------------------------------------------------
+        const words = ["Interaktif.", "Dinamis.", "Responsif.", "Memukau."];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedElement = document.getElementById('typed-text');
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typedElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2000; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+
+        typeEffect();
+
+        // ----------------------------------------------------
+        // 3. Scroll Reveal Animation
+        // ----------------------------------------------------
+        const revealElements = document.querySelectorAll('.reveal');
+
+        function checkReveal() {
             const triggerBottom = window.innerHeight * 0.85;
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                // Mengatur properti CSS yang sudah didefinisikan di gaya inline agar animasi bekerja saat discroll
-                if (rect.top < triggerBottom) {
-                    el.style.transition = 'all 0.6s ease';
-                    el.style.transform = 'translateY(0)';
-                    el.style.opacity = 1;
-                } else {
-                    el.style.transform = 'translateY(40px)';
-                    el.style.opacity = 0;
+
+            revealElements.forEach(el => {
+                const elTop = el.getBoundingClientRect().top;
+                if (elTop < triggerBottom) {
+                    el.classList.add('active');
                 }
             });
-        };
-        
-        // Inisialisasi properti awal untuk animasi scroll
-        document.addEventListener('DOMContentLoaded', () => {
-            elements.forEach(el => {
-                el.style.transition = 'none'; // Matikan transisi saat inisialisasi
-                el.style.transform = 'translateY(40px)';
-                el.style.opacity = 0;
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+
+        // ----------------------------------------------------
+        // 4. 3D Tilt & Glow Effects on Cards
+        // ----------------------------------------------------
+        const tiltCards = document.querySelectorAll('.tilt-card');
+
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Update glow position
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+
+                // Calculate tilt rotation
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -6; 
+                const rotateY = ((x - centerX) / centerX) * 6;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
             });
-            showOnScroll();
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
         });
 
-        window.addEventListener('scroll', showOnScroll);
+        // ----------------------------------------------------
+        // 5. Interactive Canvas Particles Background
+        // ----------------------------------------------------
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
 
-        // ====== Validasi Formulir Kontak ======
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Menggunakan fungsi custom notifikasi/log
-            showNotification('Terima kasih, pesan Anda telah terkirim!');
-            this.reset();
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 120 };
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
         });
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 2 + 1;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+            }
+
+            draw() {
+                ctx.fillStyle = document.documentElement.classList.contains('dark') ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.4)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                // Mouse interaction
+                if (mouse.x !== null && mouse.y !== null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouse.radius) {
+                        const angle = Math.atan2(dy, dx);
+                        const force = (mouse.radius - distance) / mouse.radius;
+                        this.x -= Math.cos(angle) * force * 3;
+                        this.y -= Math.sin(angle) * force * 3;
+                    }
+                }
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 70);
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height));
+            }
+        }
+
+        function connectParticles() {
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    let dx = particles[a].x - particles[b].x;
+                    let dy = particles[a].y - particles[b].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 110) {
+                        const opacity = 1 - (distance / 110);
+                        ctx.strokeStyle = document.documentElement.classList.contains('dark') 
+                            ? `rgba(56, 189, 248, ${opacity * 0.25})` 
+                            : `rgba(14, 165, 233, ${opacity * 0.2})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            connectParticles();
+            requestAnimationFrame(animateCanvas);
+        }
+
+        window.onload = function() {
+            resizeCanvas();
+            animateCanvas();
+        };
     </script>
 </body>
 </html>
+```
