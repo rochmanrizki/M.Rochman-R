@@ -76,7 +76,7 @@
             transform: translate(-50%, -50%);
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s;
@@ -86,23 +86,23 @@
         }
     </style>
 </head>
-<body class="bg-neutral-50 text-neutral-800 dark:bg-neutral-950 dark:text-neutral-200 min-h-screen flex flex-col justify-between selection:bg-neutral-200 dark:selection:bg-neutral-800 relative overflow-x-hidden">
+<body class="bg-neutral-50 text-neutral-800 dark:bg-neutral-950 dark:text-neutral-200 min-h-screen flex flex-col justify-between selection:bg-emerald-500/20 dark:selection:bg-emerald-500/30 relative overflow-x-hidden">
 
     <!-- Interactive Background Canvas -->
-    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40 dark:opacity-20"></canvas>
+    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40 dark:opacity-25"></canvas>
 
     <!-- Header / Navbar -->
     <header class="fixed top-0 left-0 w-full z-50 bg-neutral-50/70 dark:bg-neutral-950/70 backdrop-blur-md border-b border-neutral-200/50 dark:border-neutral-800/50 transition-colors">
         <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="#hero" class="text-lg font-bold tracking-tight hover:scale-105 transition-transform duration-200">
-                alex<span class="text-sky-500 font-extrabold">.</span>motion
+                rochman<span class="text-emerald-500 font-extrabold">.rizki</span>
             </a>
 
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#about" class="hover:text-sky-500 transition-colors">Tentang</a>
-                <a href="#projects" class="hover:text-sky-500 transition-colors">Proyek</a>
-                <a href="#skills" class="hover:text-sky-500 transition-colors">Keahlian</a>
-                <a href="#contact" class="hover:text-sky-500 transition-colors">Kontak</a>
+                <a href="#about" class="hover:text-emerald-500 transition-colors">Tentang</a>
+                <a href="#skills" class="hover:text-emerald-500 transition-colors">Keahlian</a>
+                <a href="#education" class="hover:text-emerald-500 transition-colors">Pendidikan</a>
+                <a href="#contact" class="hover:text-emerald-500 transition-colors">Kontak</a>
             </nav>
 
             <div class="flex items-center space-x-4">
@@ -121,211 +121,208 @@
 
         <!-- Mobile Navigation Menu -->
         <div id="mobile-menu" class="hidden md:hidden border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 px-6 py-4 space-y-3 text-sm">
-            <a href="#about" class="block py-1 hover:text-sky-500 transition-colors">Tentang</a>
-            <a href="#projects" class="block py-1 hover:text-sky-500 transition-colors">Proyek</a>
-            <a href="#skills" class="block py-1 hover:text-sky-500 transition-colors">Keahlian</a>
-            <a href="#contact" class="block py-1 hover:text-sky-500 transition-colors">Kontak</a>
+            <a href="#about" class="block py-1 hover:text-emerald-500 transition-colors">Tentang</a>
+            <a href="#skills" class="block py-1 hover:text-emerald-500 transition-colors">Keahlian</a>
+            <a href="#education" class="block py-1 hover:text-emerald-500 transition-colors">Pendidikan</a>
+            <a href="#contact" class="block py-1 hover:text-emerald-500 transition-colors">Kontak</a>
         </div>
     </header>
 
     <!-- Main Content Area -->
-    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20 w-full space-y-32 z-10 relative">
+    <main class="max-w-4xl mx-auto px-6 pt-28 pb-20 w-full space-y-28 z-10 relative">
 
         <!-- Hero Section -->
-        <section id="hero" class="pt-8 space-y-6 reveal">
-            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-medium bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
-                <span class="w-2 h-2 rounded-full bg-sky-500 animate-ping"></span>
-                <span>Spesialis Interaksi &amp; Animasi Web</span>
-            </div>
-            
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 leading-tight">
-                Menciptakan Pengalaman Web Yang <span id="typed-text" class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-500 border-b-2 border-sky-500"></span>
-            </h1>
-            
-            <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed font-light">
-                Halo, saya Alex. Berfokus menyatukan kode, mikro-interaksi halus, dan desain UI/UX yang fungsional untuk membawa situs web menjadi lebih hidup.
-            </p>
+        <section id="hero" class="pt-8 flex flex-col-reverse md:flex-row items-center justify-between gap-8 reveal">
+            <div class="space-y-6 md:w-2/3">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span>IT Support & Network Technician</span>
+                </div>
+                
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 leading-tight">
+                    Halo, Saya <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-emerald-500 to-teal-500">Muhammad Rochman Rizki</span>
+                </h1>
+                
+                <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-xl leading-relaxed font-light">
+                    Spesialis dalam <span id="typed-text" class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-sky-500 border-b-2 border-emerald-500 font-medium"></span>. Siap berkontribusi secara profesional di bidang IT Support, Teknisi Jaringan, dan Web Development.
+                </p>
 
-            <div class="flex flex-wrap items-center gap-4 pt-2">
-                <a href="#projects" class="group px-6 py-3 bg-neutral-900 text-neutral-50 dark:bg-neutral-100 dark:text-neutral-900 rounded-xl font-medium text-sm flex items-center space-x-2 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5">
-                    <span>Jelajahi Karya</span>
-                    <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
-                </a>
-                <a href="#contact" class="px-6 py-3 border border-neutral-300 dark:border-neutral-700 rounded-xl font-medium text-sm hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-all duration-300 hover:-translate-y-0.5">
-                    Hubungi Saya
-                </a>
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a href="#contact" class="group px-6 py-3 bg-emerald-600 text-white hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-neutral-950 rounded-xl font-medium text-sm flex items-center space-x-2 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 hover:-translate-y-0.5">
+                        <span>Hubungi Saya</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="tel:+6285640724741" class="px-6 py-3 border border-neutral-300 dark:border-neutral-700 hover:border-emerald-500 rounded-xl font-medium text-sm hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2">
+                        <i data-lucide="phone" class="w-4 h-4 text-emerald-500"></i>
+                        <span>+62-856-4072-4741</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Image Holder -->
+            <div class="w-44 h-56 sm:w-52 sm:h-64 relative rounded-2xl overflow-hidden shadow-2xl border-2 border-emerald-500/40 glow-card tilt-card flex-shrink-0 bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
+                <img id="profile-img" src="116330.png" alt="Muhammad Rochman Rizki" class="w-full h-full object-cover object-top relative z-10" onerror="handleImageError(this)">
+                <!-- Fallback SVG Avatar jika gambar lokal tidak ditemukan -->
+                <div id="avatar-fallback" class="hidden absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-emerald-600 to-teal-800 text-white p-4 text-center">
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mb-2">
+                        <i data-lucide="user" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <span class="font-bold text-sm">Muhammad Rochman Rizki</span>
+                    <span class="text-xs text-emerald-200 mt-1">TKJ & IT Support</span>
+                </div>
             </div>
         </section>
 
         <!-- About Section -->
         <section id="about" class="space-y-6 scroll-mt-24 reveal">
-            <h2 class="text-xs font-semibold uppercase tracking-widest text-sky-500">Tentang Saya</h2>
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-emerald-500">Tentang Saya</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="md:col-span-2 space-y-4 text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                <div class="md:col-span-2 space-y-4 text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm sm:text-base">
                     <p>
-                        Pengalaman saya menggabungkan dasar-dasar rekayasa perangkat lunak dengan animasi interaktif. Saya percaya motion design yang baik meningkatkan fungsionalitas tanpa mengganggu kenyamanan pengguna.
+                        Saya merupakan seorang Lulusan/Siswa SMK Ma'arif NU Tirto jurusan Teknik Komputer dan Jaringan (TKJ) yang memiliki pemahaman mendalam tentang perakitan komputer, instalasi jaringan lokal (LAN/WAN), dan konfigurasi router.
                     </p>
                     <p>
-                        Fokus utama saya adalah performa animasi yang mulus (60 FPS), antarmuka responsif, dan prinsip aksesisibilitas yang kuat.
+                        Terbiasa bekerja secara teliti, disiplin, dan beradaptasi cepat dengan teknologi baru. Saya siap berkontribusi secara profesional di bidang IT Support maupun Network Technician.
                     </p>
                 </div>
-                <div class="space-y-4 border-l-2 border-sky-500/30 pl-6">
+                <div class="space-y-4 border-l-2 border-emerald-500/40 pl-6 text-xs sm:text-sm">
                     <div>
-                        <h3 class="text-xs text-neutral-400 uppercase tracking-wider">Pengalaman</h3>
-                        <p class="text-base font-semibold mt-1">4+ Tahun</p>
+                        <h3 class="text-xs text-neutral-400 uppercase tracking-wider">Lokasi</h3>
+                        <p class="font-semibold mt-1 text-neutral-800 dark:text-neutral-200">Desa Tanjung Rt 4 Rw 2, Kec. Tirto, Kab. Pekalongan</p>
                     </div>
                     <div>
-                        <h3 class="text-xs text-neutral-400 uppercase tracking-wider">Spesialisasi</h3>
-                        <p class="text-base font-semibold mt-1">Creative Frontend, Motion UI, WebGL</p>
+                        <h3 class="text-xs text-neutral-400 uppercase tracking-wider">Soft Skills</h3>
+                        <p class="font-semibold mt-1 text-neutral-800 dark:text-neutral-200">Problem Solving | Kerja Sama Tim | Ketelitian | Adaptif</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="space-y-8 scroll-mt-24 reveal">
+        <!-- Education Section -->
+        <section id="education" class="space-y-6 scroll-mt-24 reveal">
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-emerald-500">Riwayat Pendidikan</h2>
+            
+            <div class="space-y-4">
+                <!-- Education Item 1 -->
+                <div class="tilt-card glow-card p-5 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 flex justify-between items-center hover:border-emerald-500/40 transition-colors">
+                    <div>
+                        <h3 class="font-bold text-neutral-900 dark:text-neutral-100">SMK MA'ARIF NU TIRTO</h3>
+                        <p class="text-sm text-neutral-500">Teknik Komputer dan Jaringan (TKJ)</p>
+                    </div>
+                    <span class="px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full text-xs font-mono font-medium">2024 - 2027</span>
+                </div>
+
+                <!-- Education Item 2 -->
+                <div class="tilt-card glow-card p-5 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 flex justify-between items-center hover:border-emerald-500/40 transition-colors">
+                    <div>
+                        <h3 class="font-bold text-neutral-900 dark:text-neutral-100">MTS NU TIRTO</h3>
+                        <p class="text-sm text-neutral-500">Pendidikan Menengah Pertama</p>
+                    </div>
+                    <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 text-neutral-500 rounded-full text-xs font-mono font-medium">2021 - 2024</span>
+                </div>
+
+                <!-- Education Item 3 -->
+                <div class="tilt-card glow-card p-5 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 flex justify-between items-center hover:border-emerald-500/40 transition-colors">
+                    <div>
+                        <h3 class="font-bold text-neutral-900 dark:text-neutral-100">MI SALAFIYAH TANJUNG</h3>
+                        <p class="text-sm text-neutral-500">Pendidikan Dasar</p>
+                    </div>
+                    <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 text-neutral-500 rounded-full text-xs font-mono font-medium">2015 - 2021</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Abilities Section -->
+        <section id="skills" class="space-y-8 scroll-mt-24 reveal">
             <div class="flex items-center justify-between">
-                <h2 class="text-xs font-semibold uppercase tracking-widest text-sky-500">Proyek Interaktif Pilihan</h2>
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-emerald-500">Keahlian &amp; Kemampuan Teknologis</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Project Card 1 -->
-                <div class="tilt-card glow-card group border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-sky-500/50 dark:hover:border-sky-500/50 transition-all duration-300 bg-neutral-100/40 dark:bg-neutral-900/40 backdrop-blur-sm flex flex-col justify-between hover:shadow-xl">
-                    <div class="space-y-4">
-                        <div class="flex justify-between items-start">
-                            <span class="text-xs text-neutral-400 font-mono">2026</span>
-                            <a href="#" aria-label="Lihat Proyek" class="p-2 rounded-full bg-neutral-200/50 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-300 hover:text-sky-500 hover:scale-110 transition-all">
-                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                            </a>
+            <!-- Technical Skills Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Jaringan -->
+                <div class="tilt-card glow-card border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-emerald-500/50 bg-neutral-100/40 dark:bg-neutral-900/40 backdrop-blur-sm flex flex-col justify-between hover:shadow-xl transition-all">
+                    <div class="space-y-3">
+                        <div class="p-3 bg-emerald-500/10 text-emerald-500 rounded-xl w-fit">
+                            <i data-lucide="network" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-sky-500 transition-colors">3D Product Configurator</h3>
-                        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                            Simulasi visualisasi produk 3D interaktif berbasis WebGL/Three.js dengan animasi rotasi dan pemilihan material real-time.
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mt-6">
-                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">Three.js</span>
-                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">React</span>
-                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">GSAP</span>
+                        <h3 class="text-lg font-bold text-neutral-900 dark:text-neutral-100">Jaringan & MikroTik</h3>
+                        <ul class="text-sm text-neutral-600 dark:text-neutral-400 space-y-2 list-disc list-inside">
+                            <li>Instalasi LAN/WAN & Routing MikroTik</li>
+                            <li>IP Addressing & Subnetting</li>
+                            <li>Pengkabelan UTP (Crimping & Testing)</li>
+                            <li>DHCP Server/Client, NAT & Firewall</li>
+                            <li>Pemasangan & Konfigurasi Access Point (TP-Link/MikroTik)</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Project Card 2 -->
-                <div class="tilt-card glow-card group border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-sky-500/50 dark:hover:border-sky-500/50 transition-all duration-300 bg-neutral-100/40 dark:bg-neutral-900/40 backdrop-blur-sm flex flex-col justify-between hover:shadow-xl">
-                    <div class="space-y-4">
-                        <div class="flex justify-between items-start">
-                            <span class="text-xs text-neutral-400 font-mono">2025</span>
-                            <a href="#" aria-label="Lihat Proyek" class="p-2 rounded-full bg-neutral-200/50 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-300 hover:text-sky-500 hover:scale-110 transition-all">
-                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                            </a>
+                <!-- Hardware & Software -->
+                <div class="tilt-card glow-card border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-sky-500/50 bg-neutral-100/40 dark:bg-neutral-900/40 backdrop-blur-sm flex flex-col justify-between hover:shadow-xl transition-all">
+                    <div class="space-y-3">
+                        <div class="p-3 bg-sky-500/10 text-sky-500 rounded-xl w-fit">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-sky-500 transition-colors">Kinetic Typography Engine</h3>
-                        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                            Eksperimentasi gerak tipografi responsif terhadap gerakan kursor pengguna dan ritme audio.
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mt-6">
-                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">Canvas API</span>
-                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">TypeScript</span>
+                        <h3 class="text-lg font-bold text-neutral-900 dark:text-neutral-100">Hardware & Software</h3>
+                        <ul class="text-sm text-neutral-600 dark:text-neutral-400 space-y-2 list-disc list-inside">
+                            <li>Perakitan PC & Laptop</li>
+                            <li>Maintenance & Troubleshooting Hardware</li>
+                            <li>Perbaikan Printer & Perangkat Input/Output</li>
+                            <li>Instalasi OS (Windows/Linux) & Drivers Setup</li>
+                            <li>Troubleshooting Software & Bug Fixing</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Project Card 3 -->
-                <div class="tilt-card glow-card group border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-sky-500/50 dark:hover:border-sky-500/50 transition-all duration-300 bg-neutral-100/40 dark:bg-neutral-900/40 backdrop-blur-sm flex flex-col justify-between hover:shadow-xl">
-                    <div class="space-y-4">
-                        <div class="flex justify-between items-start">
-                            <span class="text-xs text-neutral-400 font-mono">2025</span>
-                            <a href="#" aria-label="Lihat Proyek" class="p-2 rounded-full bg-neutral-200/50 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-300 hover:text-sky-500 hover:scale-110 transition-all">
-                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                            </a>
+                <!-- Web Development -->
+                <div class="tilt-card glow-card border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-emerald-500/50 bg-neutral-100/40 dark:bg-neutral-900/40 backdrop-blur-sm flex flex-col justify-between hover:shadow-xl transition-all">
+                    <div class="space-y-3">
+                        <div class="p-3 bg-teal-500/10 text-teal-500 rounded-xl w-fit">
+                            <i data-lucide="code" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-sky-500 transition-colors">Minimal Analytics Dashboard</h3>
-                        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                            Dashboard keuangan interaktif dengan statistik real-time, grafik SVG dinamis, dan navigasi gesture.
-                        </p>
+                        <h3 class="text-lg font-bold text-neutral-900 dark:text-neutral-100">Web Development</h3>
+                        <ul class="text-sm text-neutral-600 dark:text-neutral-400 space-y-2 list-disc list-inside">
+                            <li>Membuat website dengan HTML, CSS, dan JavaScript</li>
+                            <li>Pengujian & Perbaikan bug sebelum website digunakan</li>
+                            <li>Desain antarmuka responsif & interaktif</li>
+                            <li>Implementasi komponen UI modern</li>
+                        </ul>
                     </div>
-                    <div class="flex flex-wrap gap-2 mt-6">
-                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">Next.js</span>
-                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">Tailwind CSS</span>
-                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">Framer Motion</span>
-                    </div>
-                </div>
-
-                <!-- Project Card 4 -->
-                <div class="tilt-card glow-card group border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-sky-500/50 dark:hover:border-sky-500/50 transition-all duration-300 bg-neutral-100/40 dark:bg-neutral-900/40 backdrop-blur-sm flex flex-col justify-between hover:shadow-xl">
-                    <div class="space-y-4">
-                        <div class="flex justify-between items-start">
-                            <span class="text-xs text-neutral-400 font-mono">2024</span>
-                            <a href="#" aria-label="Lihat Proyek" class="p-2 rounded-full bg-neutral-200/50 dark:bg-neutral-800/50 text-neutral-600 dark:text-neutral-300 hover:text-sky-500 hover:scale-110 transition-all">
-                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                            </a>
-                        </div>
-                        <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-sky-500 transition-colors">Micro-Interaction Library</h3>
-                        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                            Kumpulan komponen UI ringan dengan fokus animasi tombol, feedback status, dan efek hover kreatif.
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mt-6">
-                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">CSS Animation</span>
-                        <span class="px-3 py-1 bg-neutral-200/60 dark:bg-neutral-800/60 rounded-full text-xs font-medium">Web Components</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="space-y-6 scroll-mt-24 reveal">
-            <h2 class="text-xs font-semibold uppercase tracking-widest text-sky-500">Keahlian &amp; Tools</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm">
-                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
-                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">Three.js / WebGL</span>
-                    <span class="text-xs text-neutral-500 mt-1 block">3D Graphics & Canvas</span>
-                </div>
-                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
-                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">GSAP / Framer Motion</span>
-                    <span class="text-xs text-neutral-500 mt-1 block">Timeline & Physics Motion</span>
-                </div>
-                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
-                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">React / Next.js</span>
-                    <span class="text-xs text-neutral-500 mt-1 block">Interactive Web Apps</span>
-                </div>
-                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
-                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">Tailwind CSS</span>
-                    <span class="text-xs text-neutral-500 mt-1 block">Modern Layouts & Effects</span>
-                </div>
-                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
-                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">JavaScript / TS</span>
-                    <span class="text-xs text-neutral-500 mt-1 block">Core Logic & Math</span>
-                </div>
-                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
-                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">Figma Motion</span>
-                    <span class="text-xs text-neutral-500 mt-1 block">Prototyping & Micro-UI</span>
-                </div>
-                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
-                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">SVG Animation</span>
-                    <span class="text-xs text-neutral-500 mt-1 block">Vector Morphing & Pathing</span>
-                </div>
-                <div class="p-4 border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl bg-neutral-100/30 dark:bg-neutral-900/30 hover:border-sky-500/40 transition-colors duration-200 group">
-                    <span class="font-medium text-neutral-900 dark:text-neutral-100 block group-hover:translate-x-1 transition-transform">Performance Optimization</span>
-                    <span class="text-xs text-neutral-500 mt-1 block">60FPS Canvas & CSS rendering</span>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="space-y-6 scroll-mt-24 reveal">
-            <h2 class="text-xs font-semibold uppercase tracking-widest text-sky-500">Kontak</h2>
-            <div class="space-y-4">
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-emerald-500">Kontak</h2>
+            <div class="space-y-6">
                 <h3 class="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-                    Mempunyai ide ide besar?
+                    Tertarik bekerjasama?
                 </h3>
-                <p class="text-neutral-600 dark:text-neutral-400 max-w-lg leading-relaxed">
-                    Mari buat proyek Anda menjadi lebih interaktif dan berkesan. Kirimkan pesan singkat melalui email.
+                <p class="text-neutral-600 dark:text-neutral-400 max-w-lg leading-relaxed text-sm sm:text-base">
+                    Saya terbuka untuk peluang kerja sebagai IT Support, Network Technician, maupun Web Developer. Mari terhubung!
                 </p>
-                <div class="pt-2">
-                    <a href="mailto:alex@example.com" class="inline-flex items-center space-x-3 text-xl font-medium text-sky-500 hover:text-sky-600 group">
-                        <span class="border-b-2 border-sky-500 group-hover:border-transparent transition-all">alex@example.com</span>
-                        <i data-lucide="arrow-up-right" class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <a href="mailto:rochmanrizki0501@gmail.com" class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 flex items-center space-x-4 hover:border-emerald-500 transition-colors group">
+                        <div class="p-3 bg-emerald-500/10 text-emerald-500 rounded-lg group-hover:scale-110 transition-transform">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-neutral-400 block">Email</span>
+                            <span class="font-medium text-sm text-neutral-900 dark:text-neutral-100 group-hover:text-emerald-500 transition-colors">rochmanrizki0501@gmail.com</span>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/6285640724741" target="_blank" class="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 flex items-center space-x-4 hover:border-emerald-500 transition-colors group">
+                        <div class="p-3 bg-emerald-500/10 text-emerald-500 rounded-lg group-hover:scale-110 transition-transform">
+                            <i data-lucide="phone-call" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-neutral-400 block">WhatsApp / Telepon</span>
+                            <span class="font-medium text-sm text-neutral-900 dark:text-neutral-100 group-hover:text-emerald-500 transition-colors">+62 856-4072-4741</span>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -336,17 +333,22 @@
     <!-- Footer -->
     <footer class="border-t border-neutral-200 dark:border-neutral-800 py-8 text-xs text-neutral-500 z-10 relative">
         <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p>&copy; 2026 Alex. All Rights Reserved.</p>
-            <div class="flex items-center space-x-6">
-                <a href="#" class="hover:text-sky-500 transition-colors">GitHub</a>
-                <a href="#" class="hover:text-sky-500 transition-colors">LinkedIn</a>
-                <a href="#" class="hover:text-sky-500 transition-colors">Twitter</a>
-            </div>
+            <p>&copy; 2026 Muhammad Rochman Rizki. All Rights Reserved.</p>
+            <p class="text-neutral-400">Pekalongan, Jawa Tengah</p>
         </div>
     </footer>
 
     <!-- JavaScript Logic & Motion Controls -->
     <script>
+        // Fallback handler untuk gambar profil
+        function handleImageError(img) {
+            img.style.display = 'none';
+            const fallback = document.getElementById('avatar-fallback');
+            if (fallback) {
+                fallback.classList.remove('hidden');
+            }
+        }
+
         // Render Lucide Icons
         lucide.createIcons();
 
@@ -388,7 +390,7 @@
         // ----------------------------------------------------
         // 2. Typing Text Effect
         // ----------------------------------------------------
-        const words = ["Interaktif.", "Dinamis.", "Responsif.", "Memukau."];
+        const words = ["Konfigurasi MikroTik.", "Jaringan LAN/WAN.", "Perakitan PC & Laptop.", "Pembuatan Website HTML/CSS/JS."];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -405,15 +407,15 @@
                 charIndex++;
             }
 
-            let typeSpeed = isDeleting ? 50 : 100;
+            let typeSpeed = isDeleting ? 40 : 90;
 
             if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2000; // Pause at end of word
+                typeSpeed = 1800;
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 500;
+                typeSpeed = 400;
             }
 
             setTimeout(typeEffect, typeSpeed);
@@ -458,10 +460,10 @@
                 // Calculate tilt rotation
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -6; 
-                const rotateY = ((x - centerX) / centerX) * 6;
+                const rotateX = ((y - centerY) / centerY) * -5; 
+                const rotateY = ((x - centerX) / centerX) * 5;
 
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
             });
 
             card.addEventListener('mouseleave', () => {
@@ -550,8 +552,8 @@
                     if (distance < 110) {
                         const opacity = 1 - (distance / 110);
                         ctx.strokeStyle = document.documentElement.classList.contains('dark') 
-                            ? `rgba(56, 189, 248, ${opacity * 0.25})` 
-                            : `rgba(14, 165, 233, ${opacity * 0.2})`;
+                            ? `rgba(16, 185, 129, ${opacity * 0.3})` 
+                            : `rgba(16, 185, 129, ${opacity * 0.25})`;
                         ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(particles[a].x, particles[a].y);
